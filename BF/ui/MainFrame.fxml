@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainFrameController">
+   <children>
+      <ImageView fx:id="bg" fitHeight="837.0" fitWidth="1340.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@bgbg.png" />
+         </image>
+      </ImageView>
+      <MenuBar fx:id="menubar" prefHeight="28.0" prefWidth="307.0" style="-fx-background-color: rgba(255, 255, 255, 0.4); -fx-border-radius: 23; -fx-background-radius: 23;">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="newone" mnemonicParsing="false" onAction="#onNewClicked" style="-fx-background-color: dropshadow(gaussian, white, 8, 0.8, 0, 0); -fx-border-radius: 23; -fx-background-radius: 23;" text="New" />
+                  <MenuItem fx:id="save" mnemonicParsing="false" onAction="#onSaveClicked" text="Save" />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#onExitClicked" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Open">
+               <items>
+                  <MenuItem fx:id="file1" mnemonicParsing="false" onAction="#onFile1Clicked" text="file1" />
+                  <MenuItem fx:id="file2" mnemonicParsing="false" onAction="#onFile2Clicked" text="file2" />
+                  <MenuItem fx:id="file3" mnemonicParsing="false" onAction="#onFile3Clicked" text="file3" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Run">
+            <items>
+              <MenuItem fx:id="execute" mnemonicParsing="false" onAction="#onExecuteClicked" text="Execute BF" />
+                  <MenuItem fx:id="execute1" mnemonicParsing="false" onAction="#onExecute1Clicked" text="Execute Ook!" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Version">
+            <items>
+              <MenuItem fx:id="blank1" mnemonicParsing="false" onAction="#onBlank1Clicked" text="Blank1" />
+                  <MenuItem fx:id="blank2" mnemonicParsing="false" onAction="#onBlank2Clicked" text="Blank2" />
+                  <MenuItem fx:id="blank3" mnemonicParsing="false" onAction="#onBlank3Clicked" text="Blank3" />
+                  <MenuItem fx:id="blank4" mnemonicParsing="false" onAction="#onBlank4Clicked" text="Blank4" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Step">
+               <items>
+                  <MenuItem fx:id="BFdo" mnemonicParsing="false" onAction="#onBFdoClicked" text="BF do" />
+                  <MenuItem fx:id="BFundo" mnemonicParsing="false" onAction="#onBFundoClicked" text="BF undo" />
+                  <MenuItem fx:id="Ookdo" mnemonicParsing="false" onAction="#onOokDoClicked" text="Ook! do" />
+                  <MenuItem fx:id="Ookundo" mnemonicParsing="false" onAction="#onOokUndoClicked" text="Ook! undo" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fx:id="login" fitHeight="62.0" fitWidth="72.0" layoutX="1192.0" layoutY="15.0" onMouseClicked="#onLoginClicked" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@login.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="dataText" layoutX="81.0" layoutY="503.0" prefHeight="201.0" prefWidth="452.0" promptText="input param">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <effect>
+            <SepiaTone level="0.25" />
+         </effect>
+      </TextArea>
+      <Label fx:id="output" alignment="CENTER" layoutX="651.0" layoutY="503.0" prefHeight="201.0" prefWidth="514.0" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20;" text="output" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="19.0" />
+         </font>
+         <effect>
+            <SepiaTone level="0.25" />
+         </effect>
+      </Label>
+      <Label fx:id="tip" layoutX="567.0" layoutY="38.0" text="WELCOME" wrapText="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TabPane layoutX="82.0" layoutY="108.0" prefHeight="345.0" prefWidth="1081.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="BF">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="textarea" layoutY="-2.0" onKeyTyped="#onBFtxtChanged" prefHeight="317.0" prefWidth="1081.0" promptText="Please input BF code." wrapText="true">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                        <Pane fx:id="fileNamePane" layoutX="326.0" layoutY="47.0" onMouseClicked="#onFileNamePaneClicked" prefHeight="243.0" prefWidth="430.0" visible="false">
+                           <children>
+                              <ImageView fitHeight="249.0" fitWidth="429.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@tip.jpg" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="fileName" layoutX="203.0" layoutY="107.0" />
+                              <Label layoutX="88.0" layoutY="108.0" prefHeight="28.0" prefWidth="86.0" text="FILE NAME" textFill="#f8f6f6" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Ook!">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea fx:id="textarea2" layoutY="-3.0" onKeyTyped="#onOoktxtChanged" prefHeight="324.0" prefWidth="1081.0" promptText="Please input Ook! code." wrapText="true">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </TextArea>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+         <effect>
+            <SepiaTone level="0.25" />
+         </effect>
+      </TabPane>
+   </children>
+</AnchorPane>

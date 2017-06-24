@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="412.0" prefWidth="464.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.LoginController">
+   <children>
+      <ImageView fitHeight="413.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@loginframe.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="116.0" layoutY="187.0" text="Name">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="94.0" layoutY="255.0" prefHeight="27.0" prefWidth="102.0" text="Password">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="password" layoutX="232.0" layoutY="255.0" />
+      <ImageView fitHeight="109.0" fitWidth="149.0" layoutX="178.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@login.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="login" layoutX="122.0" layoutY="314.0" mnemonicParsing="false" onAction="#onLoginClicked" prefHeight="32.0" prefWidth="85.0" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Log in">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="logout" layoutX="236.0" layoutY="314.0" mnemonicParsing="false" onAction="#onRegisterClicked" style="-fx-background-radius: 15; -fx-border-radius: 15;" text="Register">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="name" layoutX="232.0" layoutY="187.0" />
+      <Label fx:id="tip" layoutX="47.0" layoutY="14.0" prefHeight="32.0" prefWidth="378.0" text="                        WELCOME ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
