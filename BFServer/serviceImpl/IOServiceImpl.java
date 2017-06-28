@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -52,8 +53,24 @@ public class IOServiceImpl implements IOService{
 	@Override
 	public String readFileList(String userId) {
 		// TODO Auto-generated method stub
-		
-		return "OK";
+		String ret = "";
+	        File dir = new File("/Users/julia98/Downloads/BFInterpreter/BFServer");
+	        File[] files = dir.listFiles(); // 该文件目录下文件全部放入数组
+	        if (files != null) {
+	            for (int i = 0; i < files.length; i++) {
+	                String fileName = files[i].getName();
+	                if (files[i].isFile()) { // 判断是文件还是文件夹
+	                   if (fileName.startsWith(userId) && fileName.endsWith(".BF")) { // 判断文件名是否以userId开头
+	                    System.out.println("---" + files[i].getName());
+	                    
+	                    ret+= files[i].getName().substring(files[i].getName().indexOf('_')+1,files[i].getName().indexOf('.')) + " ";
+	                   }
+	                } else 
+	                    continue;
+	            }
+
+	        }
+	        return ret;
 	}
 	
 }

@@ -96,11 +96,48 @@ public class MainFrameController {
 		textarea2.setDisable(true);
 		dataText.setDisable(true);
 		
+		file1.setDisable(true);
+		file2.setDisable(true);
+		file3.setDisable(true);
+		
+		blank1.setDisable(true);
+		blank2.setDisable(true);
+		blank3.setDisable(true);
+		blank4.setDisable(true);
+		
 		BFtxtHistory = new ArrayList<String>();
 		OoktxtHistory = new ArrayList<String>();
 		BFVersion = new ArrayList<String>();
 		OokVersion = new ArrayList<String>();
 		paramVersion = new ArrayList<String>();
+		
+		String files = null;
+		try {
+			files = RemoteHelper.getInstance().getIOService().readFileList(this.username);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(!files.equals("")){//未找到
+			String[] formerFiles = files.split(" ");
+			int len = formerFiles.length;
+			for(int i = 0;i<len;i++){
+				if(file1.getText().equals("file1")){
+					file1.setText(formerFiles[i]);
+					file1.setDisable(false);
+				}else
+					if(file2.getText().equals("file2")){
+						file2.setText(formerFiles[i]);
+						file2.setDisable(false);
+					}else
+						if(file3.getText().equals("file3")){
+							file3.setText(formerFiles[i]);
+							file3.setDisable(false);
+						}else{
+							file1.setText(formerFiles[i]);
+						}
+			}
+		}
 	}
 	
 	public void onLoginClicked(){
@@ -146,24 +183,28 @@ public class MainFrameController {
 			BFVersion.add(codeBF);
 			OokVersion.add(codeOok);
 			paramVersion.add(dataText.getText());
+			blank1.setDisable(false);
 		}else
 			if(blank2.getText().equals("Blank2")){
 				blank2.setText(df.format(new Date()));
 				BFVersion.add(codeBF);
 				OokVersion.add(codeOok);
 				paramVersion.add(dataText.getText());
+				blank2.setDisable(false);
 			}else
 				if(blank3.getText().equals("Blank3")){
 					blank3.setText(df.format(new Date()));
 					BFVersion.add(codeBF);
 					OokVersion.add(codeOok);
 					paramVersion.add(dataText.getText());
+					blank3.setDisable(false);
 				}else
 					if(blank4.getText().equals("Blank4")){
 						blank4.setText(df.format(new Date()));
 						BFVersion.add(codeBF);
 						OokVersion.add(codeOok);
 						paramVersion.add(dataText.getText());
+						blank4.setDisable(false);
 					}else{//溢出的历史版本默认放第一个位置 这里有bug
 						blank1.setText(df.format(new Date()));
 						BFVersion.add(codeBF);
@@ -261,7 +302,10 @@ public class MainFrameController {
 			readFileBF = RemoteHelper.getInstance().getIOService().readFile(this.username, file1.getText()+".BF");
 			readFileOok = RemoteHelper.getInstance().getIOService().readFile(this.username, file1.getText()+".Ook");
 			textarea.setText(readFileBF);
+			textarea.setDisable(false);
 			textarea2.setText(readFileOok);
+			textarea2.setDisable(false);
+			dataText.setDisable(false);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -277,7 +321,10 @@ public class MainFrameController {
 			readFileBF = RemoteHelper.getInstance().getIOService().readFile(this.username, file2.getText()+".BF");
 			readFileOok = RemoteHelper.getInstance().getIOService().readFile(this.username, file2.getText()+".Ook");
 			textarea.setText(readFileBF);
+			textarea.setDisable(false);
 			textarea2.setText(readFileOok);
+			textarea2.setDisable(false);
+			dataText.setDisable(false);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -293,7 +340,10 @@ public class MainFrameController {
 			readFileBF = RemoteHelper.getInstance().getIOService().readFile(this.username, file3.getText()+".BF");
 			readFileOok = RemoteHelper.getInstance().getIOService().readFile(this.username, file3.getText()+".Ook");
 			textarea.setText(readFileBF);
+			textarea.setDisable(false);
 			textarea2.setText(readFileOok);
+			textarea2.setDisable(false);
+			dataText.setDisable(false);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
